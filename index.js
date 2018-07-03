@@ -7,9 +7,8 @@ const questions = ['Which movie won the Best Picture award in 2018?'];
 app.post('/question', (req, res) => {	
 	res.status(200);
 	res.json({
-		speech: questions[0],
-		displayText: questions[0],
-		source: 'question'
+	  "fulfillmentText": questions[0],
+	  "source": "question"
 	});
 });
 
