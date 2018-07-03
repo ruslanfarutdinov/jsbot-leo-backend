@@ -4,7 +4,7 @@ const app = express();
 
 const questions = ['Which movie won the Best Picture award in 2018?'];
 
-app.get('/question', (req, res) => {
+app.post('/question', (req, res) => {
 	res.status(200).end(questions[0]);
 });
 
