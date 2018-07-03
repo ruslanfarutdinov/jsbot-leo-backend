@@ -1,0 +1,14 @@
+{
+  "name": "oscars-bot",
+  "version": "1.0.0",
+  "description": "Oscars trivia bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Ruslan Farutdinov",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
