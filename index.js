@@ -4,8 +4,13 @@ const app = express();
 
 const questions = ['Which movie won the Best Picture award in 2018?'];
 
-app.post('/question', (req, res) => {
-	res.status(200).end(questions[0]);
+app.post('/question', (req, res) => {	
+	res.status(200);
+	res.json({
+		speech: questions[0],
+		displayText: questions[0],
+		source: 'question'
+	});
 });
 
 app.listen(process.env.PORT || 8080, () => {
