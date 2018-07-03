@@ -1,7 +1,8 @@
 {
   "name": "oscars-bot",
   "version": "1.0.0",
-  "description": "Oscars trivia bot",
+  "description": "Oscars trivia bot that's built using DialogFlow",
+  "repository": "https://github.com/ruslanfarutdinov/oscars-trivia-bot.git",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"

@@ -1,0 +1,11 @@
+{
+    "name": "oscars-bot",
+    "description": "Oscars trivia bot that's built using DialogFlow",
+    "repository": "https://github.com/ruslanfarutdinov/oscars-trivia-bot.git",
+    "keywords": [
+        "bot",
+        "Oscars",
+        "AcademyAwards",
+        "trivia"
+    ]
+}
