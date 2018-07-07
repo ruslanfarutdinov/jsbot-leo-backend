@@ -22,12 +22,13 @@ app.get('/', (req, res) => {
 });
 
 app.post('/question', (req, res) => {
-	if (req.body.intent.displayName) {
+		console.log(req.body);
+
 		res.status(201);
 		res.json({
 			'fulfillmentText': 'test test test'
 		});
-	}
+
 });
 
 // app.post('/question', (req, res) => {	
