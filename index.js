@@ -38,16 +38,6 @@ app.get('/', (req, res) => {
 	res.status(200).send('Getting here!');
 });
 
-// app.post('/question', (req, res) => {
-// 		console.log(req.body.queryResult.intent.displayName);
-
-// 		res.status(201);
-// 		res.json({
-// 			'fulfillmentText': 'test test test'
-// 		});
-
-// });
-
 app.post('/question', (req, res) => {	
 	console.log(req.body);
 
@@ -71,7 +61,7 @@ app.post('/question', (req, res) => {
 				return `${correctAnswerPrefixes[Math.floor(Math.random() * correctAnswerPrefixes.length)]} The answer is ${currentQuestion.answer[1]}.`;
 			} else {
 				isCorrectAnswer = false;
-				return `${correctAnswerPrefixes[Math.floor(Math.random() * correctAnswerPrefixes.length)]} The answer is ${currentQuestion.answer[1]}.`;
+				return `${wrongAnswerPrefixes[Math.floor(Math.random() * wrongAnswerPrefixes.length)]} The answer is ${currentQuestion.answer[1]}.`;
 			}
 		}
 
