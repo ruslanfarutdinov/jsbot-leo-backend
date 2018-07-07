@@ -7,10 +7,25 @@ app.use(bodyParser.json());
 
 const questionsBank = [
 	{
-		question: 'Which movie won the Best Picture award in 2018?',
+		question: 'Which movie won the Best Picture award in 2017?',
 		answer: ['A', 'The Shape of Water'],
 		possibleAnswers: ['A: The Shape of Water', 'B: Darkest Hour', 'C: Get Out', 'D: The Post'],
 	},
+	{
+		question: 'Who won Best Actor in 2017?',
+		answer: ['C', 'Gary Oldman'],
+		possibleAnswers: ['A: Brad Pitt', 'B: Denzel Washington', 'C: Gary Oldman', 'D: Samuel L. Jackson'],
+	},
+	{
+		question: 'Which actress got the Best Actress award in 2016?',
+		answer: ['A', 'Emma Stone'],
+		possibleAnswers: ['A: Emma Stone', 'B: Brie Larson', 'C: Julianne Moore', 'D: Cate Blanchett'],
+	},
+	{
+		question: 'Who got the Best Director award in 2017?',
+		answer: ['D', 'Guillermo del Toro'],
+		possibleAnswers: ['A: Christopher Nolan', 'B: Mel Gibson', 'C: Danny Boyle', 'D: Guillermo del Toro'],
+	}
 ];
 let currentQuestion;
 let isCorrectAnswer;
@@ -51,10 +66,10 @@ app.post('/question', (req, res) => {
 		function analyzeAnswer(answer) {
 			if (answer.toUpperCase() === currentQuestion.answer[0]) {
 				isCorrectAnswer = true;
-				return `That's correct, the answer is ${currentQuestion.answer[1]}.`;
+				return `That's correct. The answer is ${currentQuestion.answer[1]}.`;
 			} else {
 				isCorrectAnswer = false;
-				return `That would be wrong, the answer is ${currentQuestion.answer[1]}.`;
+				return `That would be wrong. The answer is ${currentQuestion.answer[1]}.`;
 			}
 		}
 
@@ -65,7 +80,7 @@ app.post('/question', (req, res) => {
 				
 				if (isCorrectAnswer) {
 					const prefix = nextQCorrectPrefixes[Math.floor(Math.random() * nextQCorrectPrefixes.length)];
-					const secondPartOfResp = `${prefix}. ${currentQuestion.question}`;
+					const secondPartOfResp = ` ${prefix}. ${currentQuestion.question}`;
 					res.status(200);
 					res.json({
 						'fulfillmentText': firstPartOfResp + secondPartOfResp,
@@ -74,7 +89,7 @@ app.post('/question', (req, res) => {
 					return;
 				} else {
 					const prefix = nextQWrongPrefixes[Math.floor(Math.random() * nextQWrongPrefixes.length)];
-					const secondPartOfResp = `${prefix}. ${currentQuestion.question}`;
+					const secondPartOfResp = ` ${prefix}. ${currentQuestion.question}`;
 					res.status(200);
 					res.json({
 						'fulfillmentText': firstPartOfResp + secondPartOfResp,
