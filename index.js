@@ -35,7 +35,7 @@ const nextQCorrectPrefixes = ['Good job! Next question is', 'Nice! Here is the n
 const nextQWrongPrefixes = ['It\'s all good, you will get it next time. Here is the next question', 'C\'mon, do better, let\'s go! Next question is'];
 
 app.get('/', (req, res) => {
-	res.status(200).send('Getting here!');
+	res.status(200).send('We don\'t collect any data from the users of Oscars Trivia Chatbot.');
 });
 
 app.post('/question', (req, res) => {	
