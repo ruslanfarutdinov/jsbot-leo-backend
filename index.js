@@ -29,6 +29,8 @@ const questionsBank = [
 ];
 let currentQuestion;
 let isCorrectAnswer;
+const correctAnswerPrefixes = ['That\'s correct.', 'Yep. Correct!', 'Correct!', 'You are correct!'];
+const wrongAnswerPrefixes = ['Nope. Wrong.', 'That would be wrong.', 'Almost, but not quite. '];
 const nextQCorrectPrefixes = ['Good job! Next question is', 'Nice! Here is the next question', 'Well done mate! Alright next question'];
 const nextQWrongPrefixes = ['It\'s all good, you will get it next time. Here is the next question', 'C\'mon, do better, let\'s go! Next question is'];
 
@@ -54,7 +56,7 @@ app.post('/question', (req, res) => {
 
 		res.status(200);
 		res.json({
-			'fulfillmentText': `Cool, whenever you're done playing, just let me know. Here is the first question: ${currentQuestion.question}. Is it ${currentQuestion.possibleAnswers[0]}, ${currentQuestion.possibleAnswers[1]}, ${currentQuestion.possibleAnswers[2]}, or ${currentQuestion.possibleAnswers[3]}?`,
+			'fulfillmentText': `Cool, whenever you're done playing, just let me know. Here is the first question: ${currentQuestion.question} Is it ${currentQuestion.possibleAnswers[0]}, ${currentQuestion.possibleAnswers[1]}, ${currentQuestion.possibleAnswers[2]}, or ${currentQuestion.possibleAnswers[3]}?`,
 			'source': 'First question response',
 		});
 	}
@@ -66,10 +68,10 @@ app.post('/question', (req, res) => {
 		function analyzeAnswer(answer) {
 			if (answer.toUpperCase() === currentQuestion.answer[0]) {
 				isCorrectAnswer = true;
-				return `That's correct. The answer is ${currentQuestion.answer[1]}.`;
+				return `${correctAnswerPrefixes[Math.floor(Math.random() * correctAnswerPrefixes.length)]} The answer is ${currentQuestion.answer[1]}.`;
 			} else {
 				isCorrectAnswer = false;
-				return `That would be wrong. The answer is ${currentQuestion.answer[1]}.`;
+				return `${correctAnswerPrefixes[Math.floor(Math.random() * correctAnswerPrefixes.length)]} The answer is ${currentQuestion.answer[1]}.`;
 			}
 		}
 
