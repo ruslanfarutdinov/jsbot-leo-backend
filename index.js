@@ -39,7 +39,7 @@ app.post('/question', (req, res) => {
 
 		res.status(200);
 		res.json({
-			'fulfillmentText': `Cool, whenever you're done playing, just let me know. Here is the first question: ${currentQuestion.question}. Is it ${possibleAnswers[0]}, ${possibleAnswers[1]}, ${possibleAnswers[2]}, or ${possibleAnswers[3]}?`,
+			'fulfillmentText': `Cool, whenever you're done playing, just let me know. Here is the first question: ${currentQuestion.question}. Is it ${currentQuestion.possibleAnswers[0]}, ${currentQuestion.possibleAnswers[1]}, ${currentQuestion.possibleAnswers[2]}, or ${currentQuestion.possibleAnswers[3]}?`,
 			'source': 'First question response',
 		});
 	}
