@@ -7,25 +7,25 @@ app.use(bodyParser.json());
 
 const questionsBank = [
 	{
-		question: 'Which movie won the Best Picture award in 2017?',
-		answer: ['A', 'The Shape of Water'],
-		possibleAnswers: ['A: The Shape of Water', 'B: Darkest Hour', 'C: Get Out', 'D: The Post'],
+		question: 'When iterating through an array, which of the following control-flow structures is the best to use?',
+		answer: ['C', 'for loop'],
+		possibleAnswers: ['A: for...in loop', 'B: while loop', 'C: for loop', 'D: for...of loop'],
 	},
 	{
-		question: 'Who won Best Actor in 2017?',
-		answer: ['C', 'Gary Oldman'],
-		possibleAnswers: ['A: Brad Pitt', 'B: Denzel Washington', 'C: Gary Oldman', 'D: Samuel L. Jackson'],
+		question: 'After the following code runs, what will be the value of result?\nvar x = 30;\nfunction get (x) { return x; }\nfunction set (value) { x = value; }\nset(10);\nvar result = get(20);',
+		answer: ['B', '20'],
+		possibleAnswers: ['A: 10', 'B: 20', 'C: 30', 'D: 40'],
 	},
-	{
-		question: 'Which actress got the Best Actress award in 2016?',
-		answer: ['A', 'Emma Stone'],
-		possibleAnswers: ['A: Emma Stone', 'B: Brie Larson', 'C: Julianne Moore', 'D: Cate Blanchett'],
-	},
-	{
-		question: 'Who got the Best Director award in 2017?',
-		answer: ['D', 'Guillermo del Toro'],
-		possibleAnswers: ['A: Christopher Nolan', 'B: Mel Gibson', 'C: Danny Boyle', 'D: Guillermo del Toro'],
-	}
+	// {
+	// 	question: 'Which actress got the Best Actress award in 2016?',
+	// 	answer: ['A', 'Emma Stone'],
+	// 	possibleAnswers: ['A: Emma Stone', 'B: Brie Larson', 'C: Julianne Moore', 'D: Cate Blanchett'],
+	// },
+	// {
+	// 	question: 'Who got the Best Director award in 2017?',
+	// 	answer: ['D', 'Guillermo del Toro'],
+	// 	possibleAnswers: ['A: Christopher Nolan', 'B: Mel Gibson', 'C: Danny Boyle', 'D: Guillermo del Toro'],
+	// }
 ];
 let currentQuestion;
 let isCorrectAnswer;
