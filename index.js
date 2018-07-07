@@ -21,68 +21,68 @@ app.get('/', (req, res) => {
 	res.status(200).send('Getting here!');
 });
 
-app.post('/ques', (req, res) => {
+app.post('/question', (req, res) => {
 	res.status(201);
 	res.json({
 		'fulfillmentText': 'test test test'
 	});
 });
 
-app.post('/question', (req, res) => {	
+// app.post('/question', (req, res) => {	
 
-	if (req.body.intent.displayName === 'First Question') {
-		currentQuestion = questionsBank[Math.floor(Math.random() * questionsBank.length)];
+// 	if (req.body.intent.displayName === 'First Question') {
+// 		currentQuestion = questionsBank[Math.floor(Math.random() * questionsBank.length)];
 
-		res.status(200);
-		res.json({
-			'fulfillmentText': `Cool, whenever you're done playing, just let me know. Here is the first question: ${currentQuestion.question}. Is it ${possibleAnswers[0]}, ${possibleAnswers[1]}, ${possibleAnswers[2]}, or ${possibleAnswers[3]}?`,
-			'source': 'First question response',
-		});
-	}
+// 		res.status(200);
+// 		res.json({
+// 			'fulfillmentText': `Cool, whenever you're done playing, just let me know. Here is the first question: ${currentQuestion.question}. Is it ${possibleAnswers[0]}, ${possibleAnswers[1]}, ${possibleAnswers[2]}, or ${possibleAnswers[3]}?`,
+// 			'source': 'First question response',
+// 		});
+// 	}
 
-	if (req.body.intent.displayName === 'Answer') {
-		const userAnswer = req.body.queryResult.queryText;
-		const splitAnswer = userAnswer.split(' ');
+// 	if (req.body.intent.displayName === 'Answer') {
+// 		const userAnswer = req.body.queryResult.queryText;
+// 		const splitAnswer = userAnswer.split(' ');
 
-		function analyzeAnswer(answer) {
-			if (answer.toUpperCase() === currentQuestion.answer[0]) {
-				isCorrectAnswer = true;
-				return `That's correct, the answer is ${currentQuestion.answer[1]}.`;
-			} else {
-				isCorrectAnswer = false;
-				return `That would be wrong, the answer is ${currentQuestion.answer[1]}.`;
-			}
-		}
+// 		function analyzeAnswer(answer) {
+// 			if (answer.toUpperCase() === currentQuestion.answer[0]) {
+// 				isCorrectAnswer = true;
+// 				return `That's correct, the answer is ${currentQuestion.answer[1]}.`;
+// 			} else {
+// 				isCorrectAnswer = false;
+// 				return `That would be wrong, the answer is ${currentQuestion.answer[1]}.`;
+// 			}
+// 		}
 
-		splitAnswer.forEach((value) => {
-			if (value === 'a' || value === 'A' || value === 'b' || value === 'B' || value === 'c' || value === 'C' || value === 'd' || value === 'D') {
-				const firstPartOfResp = analyzeAnswer(value);
-				currentQuestion = questionsBank[Math.floor(Math.random() * questionsBank.length)];
+// 		splitAnswer.forEach((value) => {
+// 			if (value === 'a' || value === 'A' || value === 'b' || value === 'B' || value === 'c' || value === 'C' || value === 'd' || value === 'D') {
+// 				const firstPartOfResp = analyzeAnswer(value);
+// 				currentQuestion = questionsBank[Math.floor(Math.random() * questionsBank.length)];
 				
-				if (isCorrectAnswer) {
-					const prefix = nextQCorrectPrefixes[Math.floor(Math.random() * nextQCorrectPrefixes.length)];
-					const secondPartOfResp = `${prefix}. ${currentQuestion.question}`;
-					res.status(200);
-					res.json({
-						'fulfillmentText': firstPartOfResp + secondPartOfResp,
-						'source': 'Answer response',
-					});
-					return;
-				} else {
-					const prefix = nextQWrongPrefixes[Math.floor(Math.random() * nextQWrongPrefixes.length)];
-					const secondPartOfResp = `${prefix}. ${currentQuestion.question}`;
-					res.status(200);
-					res.json({
-						'fulfillmentText': firstPartOfResp + secondPartOfResp,
-						'source': 'Answer response',
-					});
-					return;
-				}
-			} 
-		});
-	}
+// 				if (isCorrectAnswer) {
+// 					const prefix = nextQCorrectPrefixes[Math.floor(Math.random() * nextQCorrectPrefixes.length)];
+// 					const secondPartOfResp = `${prefix}. ${currentQuestion.question}`;
+// 					res.status(200);
+// 					res.json({
+// 						'fulfillmentText': firstPartOfResp + secondPartOfResp,
+// 						'source': 'Answer response',
+// 					});
+// 					return;
+// 				} else {
+// 					const prefix = nextQWrongPrefixes[Math.floor(Math.random() * nextQWrongPrefixes.length)];
+// 					const secondPartOfResp = `${prefix}. ${currentQuestion.question}`;
+// 					res.status(200);
+// 					res.json({
+// 						'fulfillmentText': firstPartOfResp + secondPartOfResp,
+// 						'source': 'Answer response',
+// 					});
+// 					return;
+// 				}
+// 			} 
+// 		});
+// 	}
 
-});
+// });
 
 app.listen(process.env.PORT || 8080, () => {
 	console.log('Listening on port 8080');
