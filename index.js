@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/question', (req, res) => {
-		console.log(req.body);
+		console.log(req.body.queryResult.intent.displayName);
 
 		res.status(201);
 		res.json({
