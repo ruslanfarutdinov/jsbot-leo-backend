@@ -7,25 +7,35 @@ app.use(bodyParser.json());
 
 const questionsBank = [
 	{
-		question: 'When iterating through an array, which of the following control-flow structures is the best to use?',
+		question: 'When iterating through an array, which of the following control flow structures is best to use?',
 		answer: ['C', 'for loop'],
 		possibleAnswers: ['A: for...in loop', 'B: while loop', 'C: for loop', 'D: for...of loop'],
 	},
 	{
-		question: 'After the following code runs, what will be the value of result?\nvar x = 30;\nfunction get (x) { return x; }\nfunction set (value) { x = value; }\nset(10);\nvar result = get(20);',
-		answer: ['B', '20'],
-		possibleAnswers: ['A: 10', 'B: 20', 'C: 30', 'D: 40'],
+		question: 'What is a closure?',
+		answer: ['A', 'Closure is a function object that retains ongoing access to the variables, of the context, it was created in'],
+		possibleAnswers: [
+			'A: Closure is a function that retains ongoing access to the variables, of the context, it was created in', 
+			'B: It\'s an in memory data structure that keeps track of all variables', 
+			'C: It\'s one of the control flow structures', 
+			'D: It\'s a mechanism responsible for garbage collection'
+		],
 	},
-	// {
-	// 	question: 'Which actress got the Best Actress award in 2016?',
-	// 	answer: ['A', 'Emma Stone'],
-	// 	possibleAnswers: ['A: Emma Stone', 'B: Brie Larson', 'C: Julianne Moore', 'D: Cate Blanchett'],
-	// },
-	// {
-	// 	question: 'Who got the Best Director award in 2017?',
-	// 	answer: ['D', 'Guillermo del Toro'],
-	// 	possibleAnswers: ['A: Christopher Nolan', 'B: Mel Gibson', 'C: Danny Boyle', 'D: Guillermo del Toro'],
-	// }
+	{
+		question: 'Which of these instantiation patterns rely on prototype chains for method sharing?',
+		answer: ['D', 'Pseudoclassical'],
+		possibleAnswers: ['A: Functional', 'B: Functional shared', 'C: Classical', 'D: Pseudoclassical'],
+	},
+	{
+		question: 'What does the keyword this represent?',
+		answer: ['C', 'An object that the invoked function points to when executing'],
+		possibleAnswers: [
+			'A: The function that is currently being invoked', 
+			'B: A variable used for lexical scope lookup', 
+			'C: An object that the invoked function points to when executing', 
+			'D: An object that you pass in as an argument to a function'
+		],
+	}
 ];
 let currentQuestion;
 let isCorrectAnswer;
