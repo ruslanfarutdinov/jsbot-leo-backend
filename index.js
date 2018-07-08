@@ -13,27 +13,27 @@ const questionsBank = [
 	},
 	{
 		question: 'What is a closure?',
-		answer: ['A', 'Closure is a function object that retains ongoing access to the variables, of the context, it was created in'],
+		answer: ['A', 'a function object that retains ongoing access to the variables, of the context, it was created in'],
 		possibleAnswers: [
-			'A: Closure is a function that retains ongoing access to the variables, of the context, it was created in', 
-			'B: It\'s an in memory data structure that keeps track of all variables', 
-			'C: It\'s one of the control flow structures', 
-			'D: It\'s a mechanism responsible for garbage collection'
+			'A: a function that retains ongoing access to the variables, of the context, it was created in', 
+			'B: an in memory data structure that keeps track of all variables', 
+			'C: one of the control flow structures', 
+			'D: a mechanism responsible for garbage collection'
 		],
 	},
 	{
 		question: 'Which of these instantiation patterns rely on prototype chains for method sharing?',
-		answer: ['D', 'Pseudoclassical'],
-		possibleAnswers: ['A: Functional', 'B: Functional shared', 'C: Classical', 'D: Pseudoclassical'],
+		answer: ['D', 'pseudoclassical'],
+		possibleAnswers: ['A: functional', 'B: functional shared', 'C: classical', 'D: pseudoclassical'],
 	},
 	{
 		question: 'What does the keyword this represent?',
 		answer: ['C', 'An object that the invoked function points to when executing'],
 		possibleAnswers: [
-			'A: The function that is currently being invoked', 
-			'B: A variable used for lexical scope lookup', 
-			'C: An object that the invoked function points to when executing', 
-			'D: An object that you pass in as an argument to a function'
+			'A: the function that is currently being invoked', 
+			'B: a variable used for lexical scope lookup', 
+			'C: an object that the invoked function points to when executing', 
+			'D: an object that you pass in as an argument to a function'
 		],
 	}
 ];
@@ -56,7 +56,7 @@ app.post('/question', (req, res) => {
 
 		res.status(200);
 		res.json({
-			'fulfillmentText': `Cool, whenever you're done playing, just let me know. Here is the first question: ${currentQuestion.question} Is it ${currentQuestion.possibleAnswers[0]}, ${currentQuestion.possibleAnswers[1]}, ${currentQuestion.possibleAnswers[2]}, or ${currentQuestion.possibleAnswers[3]}?`,
+			'fulfillmentText': `Cool, whenever you're done playing, just let me know. Here is the first question. ${currentQuestion.question} Is it ${currentQuestion.possibleAnswers[0]}, ${currentQuestion.possibleAnswers[1]}, ${currentQuestion.possibleAnswers[2]}, or ${currentQuestion.possibleAnswers[3]}?`,
 			'source': 'First question response',
 		});
 	}
