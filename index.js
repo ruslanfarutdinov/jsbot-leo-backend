@@ -28,7 +28,7 @@ const questionsBank = [
 	},
 	{
 		question: 'What does the keyword this represent?',
-		answer: ['C', 'An object that the invoked function points to when executing'],
+		answer: ['C', 'an object that the invoked function points to when executing'],
 		possibleAnswers: [
 			'A: the function that is currently being invoked', 
 			'B: a variable used for lexical scope lookup', 
