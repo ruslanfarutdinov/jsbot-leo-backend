@@ -106,7 +106,6 @@ app.post('/question', (req, res) => {
 				
 				currentQuestion = getQuestion();
 
-				
 				if (isCorrectAnswer) {
 					if (currentQuestion === null) {
 						res.status(200);
