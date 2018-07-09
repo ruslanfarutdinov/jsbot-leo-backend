@@ -52,8 +52,8 @@ app.post('/question', (req, res) => {
 	console.log(req.body);
 
 	if (req.body.queryResult.intent.displayName === 'First Question') {
-		currentQuestion = questionsBank.pop();
-		// currentQuestion = questionsBank[Math.floor(Math.random() * questionsBank.length)];
+		// currentQuestion = questionsBank.pop();
+		currentQuestion = questionsBank[Math.floor(Math.random() * questionsBank.length)];
 
 		res.status(200);
 		res.json({
@@ -79,8 +79,8 @@ app.post('/question', (req, res) => {
 		splitAnswer.forEach((value) => {
 			if (value === 'a' || value === 'A' || value === 'b' || value === 'B' || value === 'c' || value === 'C' || value === 'd' || value === 'D') {
 				const firstPartOfResp = analyzeAnswer(value);
-				currentQuestion = questionsBank.pop();
-				// currentQuestion = questionsBank[Math.floor(Math.random() * questionsBank.length)];
+				// currentQuestion = questionsBank.pop();
+				currentQuestion = questionsBank[Math.floor(Math.random() * questionsBank.length)];
 
 				
 				if (isCorrectAnswer) {
