@@ -92,7 +92,7 @@ app.post('/question', (req, res) => {
 				
 				if (isCorrectAnswer) {
 					const prefix = nextQCorrectPrefixes[Math.floor(Math.random() * nextQCorrectPrefixes.length)];
-					const secondPartOfResp = ` ${prefix}. ${currentQuestion.question} Is it ${currentQuestion.possibleAnswers[0]}, ${currentQuestion.possibleAnswers[1]}, ${currentQuestion.possibleAnswers[2]}, or ${currentQuestion.possibleAnswers[3]}?`;
+					const secondPartOfResp = ` ${prefix} - ${currentQuestion.question} Is it ${currentQuestion.possibleAnswers[0]}, ${currentQuestion.possibleAnswers[1]}, ${currentQuestion.possibleAnswers[2]}, or ${currentQuestion.possibleAnswers[3]}?`;
 					res.status(200);
 					res.json({
 						'fulfillmentText': firstPartOfResp + secondPartOfResp,
@@ -101,7 +101,7 @@ app.post('/question', (req, res) => {
 					return;
 				} else {
 					const prefix = nextQWrongPrefixes[Math.floor(Math.random() * nextQWrongPrefixes.length)];
-					const secondPartOfResp = ` ${prefix}. ${currentQuestion.question} Is it ${currentQuestion.possibleAnswers[0]}, ${currentQuestion.possibleAnswers[1]}, ${currentQuestion.possibleAnswers[2]}, or ${currentQuestion.possibleAnswers[3]}?`;
+					const secondPartOfResp = ` ${prefix} - ${currentQuestion.question} Is it ${currentQuestion.possibleAnswers[0]}, ${currentQuestion.possibleAnswers[1]}, ${currentQuestion.possibleAnswers[2]}, or ${currentQuestion.possibleAnswers[3]}?`;
 					res.status(200);
 					res.json({
 						'fulfillmentText': firstPartOfResp + secondPartOfResp,
