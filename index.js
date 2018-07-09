@@ -49,8 +49,6 @@ app.get('/', (req, res) => {
 });
 
 app.post('/question', (req, res) => {	
-	console.log(req.body);
-
 	if (req.body.queryResult.intent.displayName === 'First Question') {
 		// currentQuestion = questionsBank.pop();
 		currentQuestion = questionsBank[Math.floor(Math.random() * questionsBank.length)];
