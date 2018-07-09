@@ -82,15 +82,17 @@ app.post('/question', (req, res) => {
 				currentQuestion = questionsBank.pop();
 				// currentQuestion = questionsBank[Math.floor(Math.random() * questionsBank.length)];
 
-				if (currentQuestion === undefined) {
-					res.status(200);
-					res.json({
-						'fulfillmentText': 'There are no more questions at the moment. I\'m working on creating more, so check back soon. See ya!',
-						'source': 'Answer response',
-					});
-				}
 				
 				if (isCorrectAnswer) {
+					if (currentQuestion === undefined) {
+						res.status(200);
+						res.json({
+							'fulfillmentText': `${firstPartOfResp} There are no more questions at the moment. I\'m working on creating more, so check back soon. See ya!`,
+							'source': 'Answer response',
+						});
+						return;
+					}
+					
 					const prefix = nextQCorrectPrefixes[Math.floor(Math.random() * nextQCorrectPrefixes.length)];
 					const secondPartOfResp = ` ${prefix} - ${currentQuestion.question} Is it ${currentQuestion.possibleAnswers[0]}, ${currentQuestion.possibleAnswers[1]}, ${currentQuestion.possibleAnswers[2]}, or ${currentQuestion.possibleAnswers[3]}?`;
 					res.status(200);
