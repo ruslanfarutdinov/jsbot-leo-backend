@@ -27,7 +27,7 @@ const questionsBank = [
 		possibleAnswers: ['A: functional', 'B: functional shared', 'C: classical', 'D: pseudoclassical'],
 	},
 	{
-		question: 'What does the keyword this represent?',
+		question: 'What does the keyword "this" represent?',
 		answer: ['C', 'an object that the invoked function points to when executing'],
 		possibleAnswers: [
 			'A: the function that is currently being invoked', 
@@ -81,7 +81,7 @@ app.post('/question', (req, res) => {
 
 		res.status(200);
 		res.json({
-			'fulfillmentText': `Cool, whenever you're done playing, just let me know. Here is the first question. ${currentQuestion.question} Is it ${currentQuestion.possibleAnswers[0]}, ${currentQuestion.possibleAnswers[1]}, ${currentQuestion.possibleAnswers[2]}, or ${currentQuestion.possibleAnswers[3]}?`,
+			'fulfillmentText': `Cool, whenever you're done playing, just let me know. Here is the first question. ${currentQuestion.question} Is it\n${currentQuestion.possibleAnswers[0]},\n${currentQuestion.possibleAnswers[1]},\n${currentQuestion.possibleAnswers[2]},\nor ${currentQuestion.possibleAnswers[3]}?`,
 			'source': 'First question response',
 		});
 	}
@@ -108,17 +108,17 @@ app.post('/question', (req, res) => {
 
 				
 				if (isCorrectAnswer) {
-					if (currentQuestion === undefined) {
+					if (currentQuestion === null) {
 						res.status(200);
 						res.json({
-							'fulfillmentText': `${firstPartOfResp} There are no more questions at the moment. I\'m working on creating more, so check back soon. See ya!`,
+							'fulfillmentText': `${firstPartOfResp} There are no more questions at the moment. I\'m working on creating more, so check back soon. See ya!\nP.S. Please don\'t say anything other than "bye" after this, as I am not able to handle that yet. Still (machine) learning!:)`,
 							'source': 'Answer response',
 						});
 						return;
 					}
 					
 					const prefix = nextQCorrectPrefixes[Math.floor(Math.random() * nextQCorrectPrefixes.length)];
-					const secondPartOfResp = ` ${prefix} - ${currentQuestion.question} Is it ${currentQuestion.possibleAnswers[0]}, ${currentQuestion.possibleAnswers[1]}, ${currentQuestion.possibleAnswers[2]}, or ${currentQuestion.possibleAnswers[3]}?`;
+					const secondPartOfResp = ` ${prefix} - ${currentQuestion.question} Is it\n${currentQuestion.possibleAnswers[0]},\n${currentQuestion.possibleAnswers[1]},\n${currentQuestion.possibleAnswers[2]},\nor ${currentQuestion.possibleAnswers[3]}?`;
 					res.status(200);
 					res.json({
 						'fulfillmentText': firstPartOfResp + secondPartOfResp,
@@ -127,7 +127,7 @@ app.post('/question', (req, res) => {
 					return;
 				} else {
 					const prefix = nextQWrongPrefixes[Math.floor(Math.random() * nextQWrongPrefixes.length)];
-					const secondPartOfResp = ` ${prefix} - ${currentQuestion.question} Is it ${currentQuestion.possibleAnswers[0]}, ${currentQuestion.possibleAnswers[1]}, ${currentQuestion.possibleAnswers[2]}, or ${currentQuestion.possibleAnswers[3]}?`;
+					const secondPartOfResp = ` ${prefix} - ${currentQuestion.question} Is it\n${currentQuestion.possibleAnswers[0]},\n${currentQuestion.possibleAnswers[1]},\n${currentQuestion.possibleAnswers[2]},\nor ${currentQuestion.possibleAnswers[3]}?`;
 					res.status(200);
 					res.json({
 						'fulfillmentText': firstPartOfResp + secondPartOfResp,
