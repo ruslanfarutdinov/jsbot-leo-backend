@@ -52,7 +52,8 @@ app.post('/question', (req, res) => {
 	console.log(req.body);
 
 	if (req.body.queryResult.intent.displayName === 'First Question') {
-		currentQuestion = questionsBank[Math.floor(Math.random() * questionsBank.length)];
+		currentQuestion = questionsBank.pop();
+		// currentQuestion = questionsBank[Math.floor(Math.random() * questionsBank.length)];
 
 		res.status(200);
 		res.json({
@@ -78,7 +79,16 @@ app.post('/question', (req, res) => {
 		splitAnswer.forEach((value) => {
 			if (value === 'a' || value === 'A' || value === 'b' || value === 'B' || value === 'c' || value === 'C' || value === 'd' || value === 'D') {
 				const firstPartOfResp = analyzeAnswer(value);
-				currentQuestion = questionsBank[Math.floor(Math.random() * questionsBank.length)];
+				currentQuestion = questionsBank.pop();
+				// currentQuestion = questionsBank[Math.floor(Math.random() * questionsBank.length)];
+
+				if (currentQuestion === undefined) {
+					res.status(200);
+					res.json({
+						'fulfillmentText': 'There are no more questions at the moment. I\'m working on creating more, so check back soon. See ya!',
+						'source': 'Answer response',
+					});
+				}
 				
 				if (isCorrectAnswer) {
 					const prefix = nextQCorrectPrefixes[Math.floor(Math.random() * nextQCorrectPrefixes.length)];
