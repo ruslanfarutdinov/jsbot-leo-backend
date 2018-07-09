@@ -37,6 +37,7 @@ const questionsBank = [
 		],
 	}
 ];
+let usedQs = [];
 let currentQuestion;
 let isCorrectAnswer;
 const correctAnswerPrefixes = ['That\'s correct.', 'Yep. Correct!', 'Correct!', 'You are correct!'];
@@ -44,14 +45,39 @@ const wrongAnswerPrefixes = ['Nope. Wrong.', 'That would be wrong.', 'Almost, bu
 const nextQCorrectPrefixes = ['Good job! Next question is', 'Nice! Here is the next question', 'Well done mate! Alright next question'];
 const nextQWrongPrefixes = ['It\'s all good, you will get it next time. Here is the next question', 'C\'mon, do better, let\'s go! Next question is'];
 
+function getQuestion() {
+	if (usedQs.length === questionsBank.length) {
+		return null;
+	} 
+
+	let keepLooking = true;
+	let possibleQn;
+
+	while (keepLooking) {
+		possibleQn = questionsBank[Math.floor(Math.random() * questionsBank.length)];
+
+		let isThere = false;
+
+		usedQs.forEach((qn) => {
+			if (qn === possibleQn) {
+				isThere = true;
+			}
+		});
+
+		if (!isThere) {
+			return possibleQn;
+		}
+	}
+}
+
 app.get('/', (req, res) => {
 	res.status(200).send('We don\'t collect any data from the users of JS Trivia Chatbot.');
 });
 
 app.post('/question', (req, res) => {	
 	if (req.body.queryResult.intent.displayName === 'First Question') {
-		// currentQuestion = questionsBank.pop();
-		currentQuestion = questionsBank[Math.floor(Math.random() * questionsBank.length)];
+		usedQs = [];
+		currentQuestion = getQuestion();
 
 		res.status(200);
 		res.json({
@@ -77,8 +103,8 @@ app.post('/question', (req, res) => {
 		splitAnswer.forEach((value) => {
 			if (value === 'a' || value === 'A' || value === 'b' || value === 'B' || value === 'c' || value === 'C' || value === 'd' || value === 'D') {
 				const firstPartOfResp = analyzeAnswer(value);
-				// currentQuestion = questionsBank.pop();
-				currentQuestion = questionsBank[Math.floor(Math.random() * questionsBank.length)];
+				
+				currentQuestion = getQuestion();
 
 				
 				if (isCorrectAnswer) {
