@@ -65,6 +65,7 @@ function getQuestion() {
 		});
 
 		if (!isThere) {
+			usedQs.push(possibleQn);
 			return possibleQn;
 		}
 	}
@@ -75,6 +76,8 @@ app.get('/', (req, res) => {
 });
 
 app.post('/question', (req, res) => {	
+	console.log(usedQs);
+
 	if (req.body.queryResult.intent.displayName === 'First Question') {
 		usedQs = [];
 		currentQuestion = getQuestion();
