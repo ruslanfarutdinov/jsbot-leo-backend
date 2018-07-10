@@ -76,14 +76,14 @@ app.get('/', (req, res) => {
 });
 
 app.post('/question', (req, res) => {	
-	
+
 	if (req.body.queryResult.intent.displayName === 'First Question') {
 		usedQs = [];
 		currentQuestion = getQuestion();
 
 		res.status(200);
 		res.json({
-			'fulfillmentText': `Cool, whenever you're done playing, just let me know. Here is the first question. ${currentQuestion.question} Is it\n${currentQuestion.possibleAnswers[0]},\n${currentQuestion.possibleAnswers[1]},\n${currentQuestion.possibleAnswers[2]},\nor ${currentQuestion.possibleAnswers[3]}?`,
+			'fulfillmentText': `Cool, whenever you're done playing, just let me know. Here is the first question. ${currentQuestion.question}\n${currentQuestion.possibleAnswers[0]},\n${currentQuestion.possibleAnswers[1]},\n${currentQuestion.possibleAnswers[2]},\nor ${currentQuestion.possibleAnswers[3]}?`,
 			'source': 'First question response',
 		});
 	}
@@ -119,7 +119,7 @@ app.post('/question', (req, res) => {
 					}
 					
 					const prefix = nextQCorrectPrefixes[Math.floor(Math.random() * nextQCorrectPrefixes.length)];
-					const secondPartOfResp = ` ${prefix} - ${currentQuestion.question} Is it\n${currentQuestion.possibleAnswers[0]},\n${currentQuestion.possibleAnswers[1]},\n${currentQuestion.possibleAnswers[2]},\nor ${currentQuestion.possibleAnswers[3]}?`;
+					const secondPartOfResp = ` ${prefix} - ${currentQuestion.question}\n${currentQuestion.possibleAnswers[0]},\n${currentQuestion.possibleAnswers[1]},\n${currentQuestion.possibleAnswers[2]},\nor ${currentQuestion.possibleAnswers[3]}?`;
 					res.status(200);
 					res.json({
 						'fulfillmentText': firstPartOfResp + secondPartOfResp,
@@ -137,7 +137,7 @@ app.post('/question', (req, res) => {
 					}
 
 					const prefix = nextQWrongPrefixes[Math.floor(Math.random() * nextQWrongPrefixes.length)];
-					const secondPartOfResp = ` ${prefix} - ${currentQuestion.question} Is it\n${currentQuestion.possibleAnswers[0]},\n${currentQuestion.possibleAnswers[1]},\n${currentQuestion.possibleAnswers[2]},\nor ${currentQuestion.possibleAnswers[3]}?`;
+					const secondPartOfResp = ` ${prefix} - ${currentQuestion.question}\n${currentQuestion.possibleAnswers[0]},\n${currentQuestion.possibleAnswers[1]},\n${currentQuestion.possibleAnswers[2]},\nor ${currentQuestion.possibleAnswers[3]}?`;
 					res.status(200);
 					res.json({
 						'fulfillmentText': firstPartOfResp + secondPartOfResp,
