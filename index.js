@@ -76,11 +76,9 @@ app.get('/', (req, res) => {
 });
 
 app.post('/question', (req, res) => {	
-	console.log('log of usedQs for every post req: ' + usedQs);
-
+	
 	if (req.body.queryResult.intent.displayName === 'First Question') {
 		usedQs = [];
-		console.log('log of usedQs for First Question intent: ' + usedQs);
 		currentQuestion = getQuestion();
 
 		res.status(200);
@@ -137,7 +135,7 @@ app.post('/question', (req, res) => {
 						});
 						return;
 					}
-					
+
 					const prefix = nextQWrongPrefixes[Math.floor(Math.random() * nextQWrongPrefixes.length)];
 					const secondPartOfResp = ` ${prefix} - ${currentQuestion.question} Is it\n${currentQuestion.possibleAnswers[0]},\n${currentQuestion.possibleAnswers[1]},\n${currentQuestion.possibleAnswers[2]},\nor ${currentQuestion.possibleAnswers[3]}?`;
 					res.status(200);
