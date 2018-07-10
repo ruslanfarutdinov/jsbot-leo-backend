@@ -76,10 +76,11 @@ app.get('/', (req, res) => {
 });
 
 app.post('/question', (req, res) => {	
-	console.log(usedQs);
+	console.log('log of usedQs for every post req: ' + usedQs);
 
 	if (req.body.queryResult.intent.displayName === 'First Question') {
 		usedQs = [];
+		console.log('log of usedQs for First Question intent: ' + usedQs);
 		currentQuestion = getQuestion();
 
 		res.status(200);
@@ -128,6 +129,15 @@ app.post('/question', (req, res) => {
 					});
 					return;
 				} else {
+					if (currentQuestion === null) {
+						res.status(200);
+						res.json({
+							'fulfillmentText': `${firstPartOfResp} There are no more questions at the moment. I\'m working on creating more, so check back soon. See ya!\nP.S. Please don\'t say anything other than "bye" after this, as I am not able to handle that yet. Still (machine) learning!:)`,
+							'source': 'Answer response',
+						});
+						return;
+					}
+					
 					const prefix = nextQWrongPrefixes[Math.floor(Math.random() * nextQWrongPrefixes.length)];
 					const secondPartOfResp = ` ${prefix} - ${currentQuestion.question} Is it\n${currentQuestion.possibleAnswers[0]},\n${currentQuestion.possibleAnswers[1]},\n${currentQuestion.possibleAnswers[2]},\nor ${currentQuestion.possibleAnswers[3]}?`;
 					res.status(200);
