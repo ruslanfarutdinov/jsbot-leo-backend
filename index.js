@@ -15,7 +15,7 @@ const questionsBank = [
 		question: 'What is a closure?',
 		answer: ['A', 'a function object that retains ongoing access to the variables, of the context, it was created in'],
 		possibleAnswers: [
-			'A: a function that retains ongoing access to the variables, of the context, it was created in', 
+			'A: a function that retains ongoing access to the variables, of the context it was created in', 
 			'B: an in memory data structure that keeps track of all variables', 
 			'C: one of the control flow structures', 
 			'D: a mechanism responsible for garbage collection'
@@ -130,7 +130,7 @@ app.post('/question', (req, res) => {
 					if (currentQuestion === null) {
 						res.status(200);
 						res.json({
-							'fulfillmentText': `${firstPartOfResp} There are no more questions at the moment. I\'m working on creating more, so check back soon. See ya!\nP.S. Please don\'t say anything other than "bye" after this, as I am not able to handle that yet. Still (machine) learning!:)`,
+							'fulfillmentText': `${firstPartOfResp} There are no more questions at the moment. I\'m working on creating more, so check back soon. See ya!\nP.S. You can keep interacting with me by engaging in small talk. Ask me things like, "How are you?", "What are you?" or "Who is your boss?". Don't expect an answer to every possible question, I'm still (machine) learning!:)`,
 							'source': 'Answer response',
 						});
 						return;
